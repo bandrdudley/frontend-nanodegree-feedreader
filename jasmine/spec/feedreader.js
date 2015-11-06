@@ -84,8 +84,20 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test wil require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
-		it('at least a single entry element within feed container', function() {
+		beforeEach(function(done) {
+		// Wait two seconds, then call loadFeed
+			setTimeout(function () {
+				loadFeed(0);
 
+				// Invoke the special done callback
+				done();
+			}, 2000);
+		});
+		//<div class="feed"></div>
+		//<article class="entry">
+		it('contains at least a single entry element within feed container', function(done) {
+			expect($('.feed .entry').length).toBeGreaterThan(0);
+			done();
         });
 		
 	});
