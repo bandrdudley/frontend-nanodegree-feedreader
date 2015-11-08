@@ -107,8 +107,18 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-		it('content changes whrn new feed is loaded', function() {
-
+		var old_feed, new_feed;
+		 
+		beforeEach(function(done) {
+			loadFeed(0, done);
+			old_feed = $('.feed').find("h2").text();
+		});
+		 
+		it('content changes when new feed is loaded', function(done) {
+			loadFeed(1);
+			new_feed = $('.feed').find("h2").text();
+			expect(old_feed).not.toEqual(new_feed);
+			done();
         });
 		
 	});
