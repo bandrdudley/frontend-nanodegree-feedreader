@@ -110,12 +110,12 @@ $(function() {
 		var old_feed, new_feed;
 		 
 		beforeEach(function(done) {
-			loadFeed(0, done);
+			loadFeed(1, done);
 			old_feed = $('.feed').find("h2").text();
 		});
 		 
 		it('content changes when new feed is loaded', function(done) {
-			loadFeed(1);
+			loadFeed(0);
 			new_feed = $('.feed').find("h2").text();
 			expect(old_feed).not.toEqual(new_feed);
 			done();
