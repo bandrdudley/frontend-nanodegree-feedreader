@@ -31,7 +31,11 @@ $(function() {
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
+<<<<<<< HEAD
+        it('has non empty URLs', function() {
+=======
         it('has URLs defined and non empty URLs', function() {
+>>>>>>> refs/remotes/origin/gh-pages
 			allFeeds.forEach(function(feed) {
 				expect(feed.url).toBeDefined();
 				expect(feed.url.length).not.toBe(0);
@@ -42,7 +46,11 @@ $(function() {
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
+<<<<<<< HEAD
+		 it('has non empty names', function() {
+=======
 		 it('has a name defined and non empty names', function() {
+>>>>>>> refs/remotes/origin/gh-pages
 			allFeeds.forEach(function(feed) {
 				expect(feed.name).toBeDefined();
 				expect(feed.name.length).not.toBe(0);
@@ -69,10 +77,17 @@ $(function() {
 		it('menu changes visibility when menu icon is clicked', function() {
 			var menuIcon = $('.menu-icon-link');
 			
+<<<<<<< HEAD
+			menuIcon.click() //simulates a click
+			expect($('body').hasClass('menu-hidden')).toBeFalsy();
+			
+			menuIcon.click() //simulates a click
+=======
 			menuIcon.click(); //simulates a click
 			expect($('body').hasClass('menu-hidden')).toBeFalsy();
 			
 			menuIcon.click(); //simulates a click
+>>>>>>> refs/remotes/origin/gh-pages
 			expect($('body').hasClass('menu-hidden')).toBeTruthy();
         });		  
 	});
@@ -85,9 +100,19 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
 		beforeEach(function(done) {
+<<<<<<< HEAD
+		// Wait two seconds, then call loadFeed
+			setTimeout(function () {
+				loadFeed(0);
+
+				// Invoke the special done callback
+				done();
+			}, 2000);
+=======
 			loadFeed(0, function() {
 				done();
 			});	
+>>>>>>> refs/remotes/origin/gh-pages
 		});
 		//<div class="feed"></div>
 		//<article class="entry">
@@ -103,6 +128,20 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+<<<<<<< HEAD
+		var old_feed, new_feed;
+		 
+		beforeEach(function(done) {
+			loadFeed(1, done);
+			old_feed = $('.feed').find("h2").text();
+		});
+		 
+		it('content changes when new feed is loaded', function(done) {
+			loadFeed(0);
+			new_feed = $('.feed').find("h2").text();
+			expect(old_feed).not.toEqual(new_feed);
+			done();
+=======
 		var oldFeed, newFeed;
 		 
 		beforeEach(function(done) {
@@ -118,6 +157,7 @@ $(function() {
 				expect(oldFeed).not.toEqual(newFeed);
 				done();
 			});
+>>>>>>> refs/remotes/origin/gh-pages
         });
 		
 	});
